@@ -1,0 +1,30 @@
+version: "3"
+
+services:
+  bitcoind:
+    environment:
+      BITCOIN_TORCONTROL: tor:9051
+      BITCOIN_EXTRA_ARGS: |
+        onion=tor:9050
+    volumes:
+    - "tor_datadir:/home/tor/.tor"
+    links:
+    - tor
+
+  tor:
+    image: btcpayserver/tor:0.3.5.8
+    environment:
+      TOR_PASSWORD: btcpayserver
+    expose:
+      - "9050" # SOCKS
+      - "9051" # Tor Control
+    volumes:
+      - "tor_datadir:/home/tor/.tor"
+  clightning_bitcoin:
+    environment:
+      LIGHTNINGD_OPT: |
+        tor-service-password=btcpayserver
+        proxy=tor:9050
+        addr=autotor:tor:9051
+volumes:
+    tor_datadir:
