@@ -34,6 +34,7 @@ services:
     environment:
       LND_EXTRA_ARGS: |
         tor.active=1
+        tor.v3=1
         tor.socks=tor:9050
         tor.control=tor:9051
     links:
