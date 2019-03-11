@@ -30,7 +30,7 @@ services:
     links:
       - tor
 
- lnd_bitcoin:
+  lnd_bitcoin:
     environment:
       LND_EXTRA_ARGS: |
         tor.active=1
