@@ -1,0 +1,7 @@
+{
+  "name": "BTCPay Server Docker",
+  "description": "Self-hosted payment provider",
+  "repository": "https://github.com/caffeinum/btcpayserver-docker",
+  "logo": "https://node-js-sample.herokuapp.com/node.png",
+  "keywords": ["btcpay"]
+}
